@@ -1,8 +1,19 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("maven-publish")
 }
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            groupId = "com.github.GabrielAlvesDoCarmo"
+            artifactId = "core-default"
+            version = "1.0.0"
 
+//            from(components["release"]) // ou "debug"
+        }
+    }
+}
 android {
     namespace = "br.com.gds.core"
     compileSdk = 34
@@ -24,11 +35,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
 }
 
