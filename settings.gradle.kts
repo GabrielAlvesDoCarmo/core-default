@@ -21,3 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "core-default"
 include(":app")
+include(":core")
