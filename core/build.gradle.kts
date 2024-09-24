@@ -1,20 +1,18 @@
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("maven-publish")
 }
 
 android {
-    namespace = "br.com.gds.core_default"
+    namespace = "br.com.gds.core"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "br.com.gds.core_default"
         minSdk = 28
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -33,10 +31,24 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
+
+}
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>(name = "release") {
+                from(components["release"])
+                groupId = "com.github.GabrielAlvesDoCarmo"
+                artifactId = "core-default"
+                version = "1.0.0"
+            }
+        }
+    }
 }
 
+
 dependencies {
-    implementation(project(":core"))
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
