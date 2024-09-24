@@ -41,6 +41,7 @@ afterEvaluate {
                 groupId = "com.github.GabrielAlvesDoCarmo"
                 artifactId = "core-default"
                 version = "1.0.0-a"
+
             }
         }
     }
