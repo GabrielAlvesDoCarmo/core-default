@@ -40,12 +40,26 @@ afterEvaluate {
                 from(components["release"])
                 groupId = "com.github.GabrielAlvesDoCarmo"
                 artifactId = "core-default"
-                version = "1.0.0-a"
-
+                version = "1.0.0"
             }
         }
     }
 }
+
+//ou assim
+
+//publishing {
+//    publications {
+//        create<MavenPublication>(name = "release") {
+//            groupId = "com.github.GabrielAlvesDoCarmo"
+//            artifactId = "core-default"
+//            version = "1.0.0-a"
+//            afterEvaluate {
+//                from(components["release"])
+//            }
+//        }
+//    }
+//}
 
 
 dependencies {
