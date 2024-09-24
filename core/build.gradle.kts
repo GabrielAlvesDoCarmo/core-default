@@ -3,17 +3,7 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     id("maven-publish")
 }
-publishing {
-    publications {
-        create<MavenPublication>("maven") {
-            groupId = "com.github.GabrielAlvesDoCarmo"
-            artifactId = "core-default"
-            version = "1.0.0"
 
-//            from(components["release"]) // ou "debug"
-        }
-    }
-}
 android {
     namespace = "br.com.gds.core"
     compileSdk = 34
@@ -41,7 +31,21 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
+
 }
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>(name = "release") {
+                from(components["release"])
+                groupId = "com.github.GabrielAlvesDoCarmo"
+                artifactId = "core-default"
+                version = "1.0.0"
+            }
+        }
+    }
+}
+
 
 dependencies {
 
