@@ -1,4 +1,4 @@
-package br.com.gds.core.login
+package br.com.gds.core.login_module.login
 
 class LoginResponse {
     val success: Boolean = false
