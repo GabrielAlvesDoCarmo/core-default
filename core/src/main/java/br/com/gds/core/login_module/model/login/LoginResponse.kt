@@ -1,14 +1,9 @@
 package br.com.gds.core.login_module.model.login
 
-class LoginResponse {
-    val success: Boolean = false
-    val message: String = ""
-    val user: User? = null
-    val token: String = ""
+import br.com.gds.core.login_module.commons.model.UserAuth
 
-    class User {
-        val id: String = ""
-        val name: String = ""
-        val email: String = ""
-    }
-}
+data class LoginResponse(
+    val success: Boolean,
+    val message: String? = null,
+    val userInfo: UserAuth? = null,
+)
