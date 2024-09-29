@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
     id("maven-publish")
+    alias(libs.plugins.google.gms.google.services)
 }
 
 android {
@@ -40,7 +41,7 @@ afterEvaluate {
                 from(components["release"])
                 groupId = "com.github.GabrielAlvesDoCarmo"
                 artifactId = "core-default"
-                version = "1.0.0"
+                version = "1.0.8"
             }
         }
     }
@@ -67,6 +68,13 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
+    //firebase
+    implementation(libs.firebase.auth)
+    implementation(libs.firebase.database)
+
+    implementation(libs.firebase.firestore)
+    implementation(libs.firebase.storage)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
